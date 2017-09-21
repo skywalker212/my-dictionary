@@ -1,9 +1,13 @@
 const express = require('express');
-
+const cors = require('cors');
+const bodyParser = require('body-parser');
 var app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+
 app.use(function (req,res,next) {
-  console.log(`${req.method} request for ${req.url}`);
+  console.log(`${req.method} request for ${req.url} - ${JSON.stringify(req.body)}`);
   next();
 });
 
@@ -17,6 +21,19 @@ app.use(express.static("./public"));
 
 app.get('/request',function (req,res) {
   res.json(words);
+});
+
+app.post('/request',function (req,res) {
+  words.push(req.body);
+  res.json(words);
+});
+
+app.delete('/request/:term',function (req,res) {
+  words = words.filter(function (definition) {
+    return definition.word.toLowerCase() != req.params.term.toLowerCase();
+  });
+  res.json(words);
+  console.log(words);
 });
 
 app.listen(3000);
