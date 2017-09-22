@@ -19,9 +19,9 @@ function clickFunction(id) {
       data.forEach(function(x) {
         html += `
           <div class="entry">
-            <a id='${x.word}' href="" onclick="clickFunction(this.id)" >${x.word}</a>
+            <a id='${x.word}' class='word' href="" onclick="clickFunction(this.id)">${x.word}</a>
             <div class="description">${x.desc}</div>
-          </div></a>
+          </div>
         `;
       });
       $('.words').html(html);
@@ -38,9 +38,9 @@ function makeAjaxRequest() {
       data.forEach(function(x) {
         html += `
           <div class="entry">
-            <a id='${x.word}' href="" onclick="clickFunction(this.id)" >${x.word}</a>
+            <div class="word"><a id='${x.word}' href="" onclick="clickFunction(this.id)" >${x.word}</a></div>
             <div class="description">${x.desc}</div>
-          </div></a>
+          </div>
         `;
       });
       $('.words').html(html);
