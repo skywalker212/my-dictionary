@@ -24,6 +24,8 @@ app.get('/request',function (req,res) {
 });
 
 app.post('/request',function (req,res) {
+  req.body.word = req.body.word.trim();
+  req.body.desc = req.body.desc.trim();
   words.push(req.body);
   res.json(words);
 });
