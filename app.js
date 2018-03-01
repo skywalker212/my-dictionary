@@ -50,6 +50,6 @@ app.delete('/request/:term', function(req, res) {
   console.log(words);
 });
 
-app.listen(3000);
+app.listen(8080);
 
-console.log("express app running on port 3000");
+console.log("express app running on port 8080");
