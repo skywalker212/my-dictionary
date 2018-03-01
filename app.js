@@ -8,6 +8,9 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+app.set('view engine','ejs');
+
+
 var words = [{
     "word": "plyhistor",
     "desc": "a person of great and varied learning."
@@ -27,7 +30,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static("./public"));
+app.use(express.static(__dirname +"/public"));
 
 app.use(cors());
 
